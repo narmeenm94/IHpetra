@@ -2446,8 +2446,8 @@ ARjs.Context = THREEx.ArToolkitContext = function (parameters) {
         // tune the maximum rate of pose detection in the source image
         maxDetectionRate: 60,
         // resolution of at which we detect pose in the source image
-        canvasWidth: 1024,
-        canvasHeight: 776,
+        canvasWidth: 640,
+        canvasHeight: 480,
 
         // the patternRatio inside the artoolkit marker - artoolkit only
         patternRatio: 0.5,
@@ -2767,8 +2767,8 @@ ARjs.Profile.prototype.performance = function (label) {
 
         this.contextParameters.maxDetectionRate = 60
     } else if (label === 'phone-normal') {
-        this.contextParameters.canvasWidth = 256 * 4
-        this.contextParameters.canvasHeight = 194 * 4
+        this.contextParameters.canvasWidth = 80 * 4
+        this.contextParameters.canvasHeight = 60 * 4
 
         this.contextParameters.maxDetectionRate = 30
     } else if (label === 'phone-slow') {
@@ -3036,7 +3036,7 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
     }
 
     // get available devices
-    MediaDevices.getUserMediaenumerateDevices().then(function (devices) {
+    navigator.mediaDevices.enumerateDevices().then(function (devices) {
         var userMediaConstraints = {
             audio: false,
             video: {
